@@ -6,3 +6,5 @@ function imprimir (nome, indice) {
 
 fabricantes.forEach(imprimir)
 fabricantes.forEach(fabricante => console.log(fabricante))
+
+console.log('testando git :~)')
