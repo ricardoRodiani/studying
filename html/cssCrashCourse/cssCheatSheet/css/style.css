@@ -202,5 +202,5 @@ a:active{
 }
 
 .my-list li:nth-child(even){
-    background: yellow;
+    background: gray;
 }
