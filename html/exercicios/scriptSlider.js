@@ -1,42 +1,38 @@
-function mover(elem, inicio, fim, passo, callback) {
-    const novoInicio = inicio - passo
-    if (novoInicio >= fim) {
-        elem.style.left = novoInicio + 'px'
-        setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+function mover(elem, inicio, fim, passo, callback){
+    const proxPosicao = inicio - passo
+    if(proxPosicao >= fim){
+        elem.style.left = proxPosicao + 'px'
+        setTimeout(() => mover(elem, proxPosicao, fim, passo, callback), 7)
     } else {
         callback()
     }
 }
 
-// const p = document.querySelector('[wm-slider] > p')
-// p.style.display = 'block'
-// mover(p, 1500, -520, 5, () => {
-//     console.log('Terminou!!!')
-// })
+// const elem = document.querySelector('[wm-slider] > p')
+// elem.style.display = 'block'
+// mover(elem, 1500, -520, 5, () => console.log('Terminou!!!'))
 
 function slider() {
-    const elementos = document.querySelectorAll('[wm-slider] > p')
-    const slides = Array.from(elementos)
+    const elem = document.querySelectorAll('[wm-slider] > p')
+    const slides = Array.from(elem)
     exibirSlide(slides, slides[0])
 }
 
-function exibirSlide(slides, slide) {
-    slide.style.display = 'block'
-
+function exibirSlide(slides, atual) {
+    atual.style.display = 'block'
     const inicio = innerWidth
-    const fim = -slide.clientWidth
+    const fim = -atual.clientWidth
+    atual.style.left = `${inicio}px`
 
-    slide.style.left = `${inicio}px`
-
-    mover(slide, inicio, fim, 5, () => {
-        slide.style.display = 'none'
-        exibirSlide(slides, getProximo(slides, slide))
+    mover(atual, inicio, fim, 5, () => {
+        atual.style.display = 'none'
+        exibirSlide(slides, proximoSlide(slides, atual))
     })
 }
 
-function getProximo(lista, atual) {
-    const i = lista.indexOf(atual) + 1
-    return i < lista.length ? lista[i] : lista[0]
+function proximoSlide(slides, atual){
+    const i = slides.indexOf(atual) + 1
+    return i < slides.length ? slides[i] : slides[0] 
 }
 
 slider()
