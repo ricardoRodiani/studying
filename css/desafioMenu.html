@@ -7,106 +7,112 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0px;
-        }
-        .cabecalho {
-            background-color:rgb(36, 36, 36);
-            font-size: 23px;
             font-family: 'Oswald', sans-serif;
-            border-bottom: solid 3px deepskyblue;
-            padding: 10px;
-            margin: 0px;
-            height: 70px;
+            background-color: lightgray;
         }
 
-        .logo,
-        .menu,
-        .autenticacao {
-            display: inline-block;
-        }
+        .cabecalho {
 
-        .menu {
-            list-style-type: none;
-            text-align: center;
-            padding: 0;
-            margin: 0;
-
-        }
-
-        button,
-        .fa {
-            display: none;
-            background-color: gray;
-            padding: 5px;
-            margin: 0px;
-            border: solid 1px black;
-        }
-
-        button {
-            background-color: gainsboro;
+            font-size: 23px;
+            border-bottom: solid 5px deepskyblue;
+            background-color: rgb(36, 36, 36);
+            height: 95px;
+            box-sizing: content-box;
         }
 
         .logo {
-            margin-top: 10px;
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
         }
 
-        .logo img,
-        #inicio {
+        .logo img {
+            /* Vai ocupar 100% do tamnho do parent */
+            height: 100%;
+        }
+
+        .menu-toggle {
+            float: right;
+            color: whitesmoke;
+            background-color: gray;
+            border: solid 1px black;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 25px 15px;
+        }
+
+        .menu {
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
+
+        /* ul por padrão tem padding e margin, devemos tirar */
+        .menu ul {
+            margin: 0px;
             padding: 0px;
-            width: 200px;
         }
 
         .menu li {
             display: inline-block;
-            padding: 10px;
         }
 
-        nav,
-        ul,
-        .autenticacao {
-            padding: 0;
+        .cabecalho a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.3em;
+        }
+
+        .menu a {
+            padding: 15px;
         }
 
         .autenticacao {
-            margin-top: 10px;
             float: right;
-            margin-right: 30px;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu a:hover,
+        .menu a.selected {
+            background-color: #4faddb;
+            color: #000;
         }
 
         .botao {
-            border-radius: 25px;
-            padding: 10px;
-            background-color: orangered;
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 10px;
         }
 
-
-
-        a {
-            color: white;
-            text-decoration: none;
+        .destaque {
+            background: orangered;
+            color: #ffffff;
         }
 
-        .menu li:hover {
-            background-color: deepskyblue !important;
-        }
-
-        @media (max-width: 725px) {
-            .autenticacao {
+        @media(min-width: 765px) {
+            .menu-toggle {
                 display: none;
             }
         }
 
-        @media (max-width: 580px) {
+        @media(max-width: 766px) {
             .menu {
                 display: none;
             }
+        }
 
-            button,
-            .fa {
-                display: block;
-                float: right;
-                text-align: center;
+        @media(max-width: 1048px) {
+            .autenticacao {
+                display: none;
             }
         }
     </style>
@@ -145,38 +151,14 @@
     </header>
 
     <script>
-        let elems = document.querySelectorAll('li')
-        
-        function locationHashChanged() {
-            let domElement
-            switch (location.hash) {
-                case '#inicio':
-                    elems[0].style.backgroundColor = 'deepskyblue'
-                    elems[1].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[2].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[3].style.backgroundColor = 'rgb(36, 36, 36)'
-                    break
-                case '#cursos':
-                    elems[0].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[1].style.backgroundColor = 'deepskyblue'
-                    elems[2].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[3].style.backgroundColor = 'rgb(36, 36, 36)'
-                    break
-                case '#sobre':
-                    elems[0].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[1].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[2].style.backgroundColor = 'deepskyblue'
-                    elems[3].style.backgroundColor = 'rgb(36, 36, 36)'
-                    break
-                case '#contato':
-                    elems[0].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[1].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[2].style.backgroundColor = 'rgb(36, 36, 36)'
-                    elems[3].style.backgroundColor = 'deepskyblue'
-                    break
-            }
+        window.onhashchange = function (e) {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            const oldMenu = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newMenu = document.querySelector(`.menu a[href='#${newURL}']`)
+            oldMenu && oldMenu.classList.remove('selected')
+            newMenu && newMenu.classList.add('selected')
         }
-        window.onhashchange = locationHashChanged;
     </script>
 </body>
 
