@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .cabecalho {
+            background-color: rgb(49, 49, 49);
+            font-size: 23px;
+            font-family: 'Oswald', sans-serif;
+            border-bottom: solid 6px cornflowerblue;
+            padding: 10px;
+            margin: 0px;
+            height: 60px;
+        }
+
+        .logo,
+        .menu,
+        .autenticacao {
+            display: inline-block;
+        }
+
+        .menu {
+            list-style-type: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        button,
+        .fa {
+            display: none;
+            background-color: gray;
+            padding: 5px;
+            margin: 0px;
+            border: solid 1px black;
+        }
+
+        button {
+            background-color: gainsboro;
+        }
+
+        .logo img,
+        #inicio {
+            padding: 0px;
+            width: 200px;
+        }
+
+        .menu li {
+            display: inline-block;
+            padding: 10px;
+
+        }
+
+        nav,
+        ul,
+        .autenticacao {
+            padding: 0;
+        }
+
+        .autenticacao {
+            margin-top: 10px;
+            float: right;
+            margin-right: 30px;
+        }
+
+        .botao {
+            border-radius: 25px;
+            padding: 10px;
+            background-color: orangered;
+        }
+
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu li:hover {
+            background-color: deepskyblue;
+        }
+
+        @media (max-width: 690px) {
+            .autenticacao {
+                display: none;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .menu {
+                display: none;
+            }
+
+            button,
+            .fa {
+                display: block;
+                float: right;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        function locationHashChanged() {
+            let domElement
+            switch (location.hash) {
+                case '#inicio':
+                    domElement = document.querySelector('')
+                    console.log(domElement)
+                    break
+                case '#cursos':
+                    elem = document.getElementById("#inicio")
+                    elem.style.backgroundColor = 'deepskyblue;'
+                    break
+                case '#sobre':
+                    elem = document.getElementById("#inicio")
+                    elem.style.backgroundColor = 'deepskyblue;'
+                    break
+                case '#contato':
+                    document.getElementById("#inicio")
+                    elem.style.backgroundColor = 'deepskyblue;'
+                    break
+            }
+        }
+        window.onhashchange = locationHashChanged;
+    </script>
+</body>
+
+</html>
