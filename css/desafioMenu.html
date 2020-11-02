@@ -7,18 +7,17 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
+        body {
+            margin: 0px;
         }
-
         .cabecalho {
-            background-color: rgb(49, 49, 49);
+            background-color:rgb(36, 36, 36);
             font-size: 23px;
             font-family: 'Oswald', sans-serif;
-            border-bottom: solid 6px cornflowerblue;
+            border-bottom: solid 3px deepskyblue;
             padding: 10px;
             margin: 0px;
-            height: 60px;
+            height: 70px;
         }
 
         .logo,
@@ -48,6 +47,10 @@
             background-color: gainsboro;
         }
 
+        .logo {
+            margin-top: 10px;
+        }
+
         .logo img,
         #inicio {
             padding: 0px;
@@ -57,7 +60,6 @@
         .menu li {
             display: inline-block;
             padding: 10px;
-
         }
 
         nav,
@@ -79,16 +81,17 @@
         }
 
 
+
         a {
             color: white;
             text-decoration: none;
         }
 
         .menu li:hover {
-            background-color: deepskyblue;
+            background-color: deepskyblue !important;
         }
 
-        @media (max-width: 690px) {
+        @media (max-width: 725px) {
             .autenticacao {
                 display: none;
             }
@@ -142,24 +145,34 @@
     </header>
 
     <script>
+        let elems = document.querySelectorAll('li')
+        
         function locationHashChanged() {
             let domElement
             switch (location.hash) {
                 case '#inicio':
-                    domElement = document.querySelector('')
-                    console.log(domElement)
+                    elems[0].style.backgroundColor = 'deepskyblue'
+                    elems[1].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[2].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[3].style.backgroundColor = 'rgb(36, 36, 36)'
                     break
                 case '#cursos':
-                    elem = document.getElementById("#inicio")
-                    elem.style.backgroundColor = 'deepskyblue;'
+                    elems[0].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[1].style.backgroundColor = 'deepskyblue'
+                    elems[2].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[3].style.backgroundColor = 'rgb(36, 36, 36)'
                     break
                 case '#sobre':
-                    elem = document.getElementById("#inicio")
-                    elem.style.backgroundColor = 'deepskyblue;'
+                    elems[0].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[1].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[2].style.backgroundColor = 'deepskyblue'
+                    elems[3].style.backgroundColor = 'rgb(36, 36, 36)'
                     break
                 case '#contato':
-                    document.getElementById("#inicio")
-                    elem.style.backgroundColor = 'deepskyblue;'
+                    elems[0].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[1].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[2].style.backgroundColor = 'rgb(36, 36, 36)'
+                    elems[3].style.backgroundColor = 'deepskyblue'
                     break
             }
         }
