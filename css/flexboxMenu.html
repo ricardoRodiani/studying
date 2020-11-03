@@ -54,6 +54,32 @@
         /* ==================== */
         /* Solução com Flex Box */
         /* ==================== */
+
+        /* 
+            primeiro colocamos o cacabeçalho todo em flexbox por padrao row
+            depois alinhamos o conteudo em center levando o cross axis em conta    
+            e colocamos um espacamento horizontal de que a os espaco entre os items 
+            sejam iguais
+        */
+        .cabecalho {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+        }
+
+        .menu{
+            flex-grow: 10;
+        }
+
+        .menu ul{
+            display: flex;
+            /* justify-content: space-between; */
+        }
+
+        .menu li {
+            margin: 0x 10px;
+        }
+
     </style>
 </head>
 
